@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<ul class=flashes>
+  {% for category, message in messages %}
+  <li class="{{ category }}">{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<body>
+  <h1></h1>
+  <div class="container my-4">
+    {% for i in items %}
+      <div class="card" style="width: 18rem;">
+        <a href="#"><img src="/static/{{items[i][3]}}" class="card-img-top" alt="Product Image"></a>
+        <div class="card-body">
+          <a href="">
+            <h5 class="card-title">Product Name : {{items[i][0]}}</h5>
+          </a>
+          <h5 class="card-title">price:
+            {{items[i][1]}}</h5>
+          <h5 class="card-title">Available stock: {{items[i][2]}}</h5>
+          <h5 class="card-title">Category {{items[i][4]}}</h5>
+          <form methods="post" action="{{url_for('pay',itemsid=i,name=items[i][0],price=items[i][1])}}">
+          <h5 class="ca-t">select Quantity</h5>
+          <select name="qyt">
+            <option value="1">1</option>
+            <option value="1">2</option>
+            <option value="1">3</option>
+            <option value="1">4</option>
+            <option value="1">5</option>
+            <option value="1">6</option>
+            <option value="1">7</option>
+            <option value="1">8</option>
+            <option value="1">9</option>
+            <option value="1">10</option>
+          </select>
+          <div class="button">
+            <button class="btn btn-warning">BuyNow</button>
+            <!--  Buy Now and Add to Cart Buttons -->
+          </form>
+          <p style="margin-top: 2%;">
+            <a href="{{url_for('removecart',itemid=i)}}" class="btn btn-primary mr-2">Remove</a>
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

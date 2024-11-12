@@ -1,0 +1,2 @@
+secret_key=b'|\x0b\xb5C~%\xde\x84\xccd:q\x7f\xf4\x1c'
+salt='registerverify'
